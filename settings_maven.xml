@@ -1,0 +1,63 @@
+<settings>
+
+	<servers>
+		<server>
+			<id>TomcatServer</id>
+			<username>admin</username>
+			<password>admin</password>
+		</server>
+	</servers>
+
+
+	<localRepository>C:\Users\X230099\.m2\repository</localRepository>
+	<!-- interactiveMode should always be non-default : false -->
+	<interactiveMode>false</interactiveMode>
+	<!-- offline should always be default : false -->
+	<offline>false</offline>
+	<!-- No specific group plugins specified here, only hard-coded standard 
+		availables : "org.apache.maven.plugins" and "org.codehaus.mojo" -->
+	<pluginGroups />
+	<!-- No proxy should be needed as all access are done only through central 
+		itbox -->
+	 <proxies/>
+  
+   
+
+	<mirrors>
+		<mirror>
+			<!--This sends everything else to /public -->
+			<id>itbox-central </id>
+			<mirrorOf>central</mirrorOf>
+			<url>https://itbox-nexus-ext.fr.world.socgen/nexus-ext/content/repositories/ext-thirdparty-maven2-group-releases/</url>
+		</mirror>
+		<mirror>
+			<!--This sends everything else to /public -->
+			<id>itbox-piv </id>
+			<mirrorOf>priv</mirrorOf>
+			<url>https://itbox-nexus-pri.ch.world.socgen:8543/nexus-pri</url>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>itbox</id>
+
+			<pluginRepositories>
+				<pluginRepository>
+					<id>itbox-plugins</id>
+					<url>https://itbox-nexus-ext.fr.world.socgen/nexus-ext/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>itbox</activeProfile>
+	</activeProfiles>
+
+</settings>
